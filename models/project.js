@@ -7,10 +7,14 @@ const project = new mongoose.Schema({
     Description:{
         type: String
     },
-    Employee:[{
-        type: String,
-        required: false
-    }],
+    Employee:[
+        {
+            emp:{
+                type: Schema.Types.ObjectId,
+                enum: 'Employee'
+            }
+        }
+    ],
     Status:{
         type: String,
         enum: ['In-progess','Completed','NoStatus'],

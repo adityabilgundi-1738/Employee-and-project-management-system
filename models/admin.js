@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const Employee = require('./employee') 
+
 const admin = new mongoose.Schema({
     Name:{
         type: String,
@@ -8,7 +10,9 @@ const admin = new mongoose.Schema({
         type: String,
         required: true
     },
-    
+    Employee:[{
+        type: Schema.Types.objectID
+    }]
 })
 
 module.exports('Admin',admin);

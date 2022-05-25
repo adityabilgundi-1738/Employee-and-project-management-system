@@ -15,6 +15,14 @@ const employee = new mongoose.Schema('employee')({
     Cell:{
         type: Number,
         required: true
+    },
+    Projects:{
+        type: project,
+        required: true 
+    },
+    Level:{
+        type: String,
+        enum: ['Beginner', 'Intermideate', 'Advanced']
     }
 })
 
