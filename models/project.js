@@ -26,7 +26,7 @@ const project = new mongoose.Schema({
     },
     Deadline:{
         type: Date,
-        default: Date.now()
+        default: Date.now
     }
 })
 
