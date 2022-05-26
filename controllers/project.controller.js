@@ -1,8 +1,35 @@
 const Project = require('../models/project')
 
-const create_proj = async (req,res) => {//incomp
-    const proj = new Project(req.body)
+const get_proj = async(req,res,id) => {//renders the individual project page
     try{
+        let result = await Project.findById(id)
+        if(!result){
+            return res.status(400).json({
+                error: "Employee Does not exist"
+            })
+        }
+        req.profile = result
+    }
+    catch(e){
+        console.log(e)
+    }
+}
+
+const list_proj = async(req,res) => {
+    try{
+        const result = await Project.find().select('')
+        res.json(result)
+    }
+    catch(err){
+        return res.status(400).json({
+            error: "Could not list all Projects"
+        })
+    }
+}
+
+const create_proj = async (req,res) => {//incomp
+    try{
+        const proj = new Project(req.body)
         await proj.save()
         return res.status(200).json({
             message: "Succesfully created a Project"
@@ -12,16 +39,6 @@ const create_proj = async (req,res) => {//incomp
         return res.status(400).json({
             error: "Project not created"
         })
-    }
-}
-
-const get_proj = async(req,res,id) => {//renders the individual project page
-    try{
-        const result = await Project.findById(id)
-        res.render('Project_details', {Employee: result, title: 'Project Details'})
-    }
-    catch(e){
-        console.log(e)
     }
 }
 
@@ -39,10 +56,19 @@ const delete_proj = async(req,res) => {
     try{
         let result = req.profile
         let deletedProj = await result.remove()
+        res.json(deletedProj)
+    }
+    catch(err){
+        return res.status(400).json({
+            error: "Project not Deleted"
+        })
     }
 }
 
 module.exports = {
-    create_Project,
-    create_Project_page,
+    create_proj,
+    delete_proj,
+    update_proj,
+    get_proj,
+    list_proj
 }

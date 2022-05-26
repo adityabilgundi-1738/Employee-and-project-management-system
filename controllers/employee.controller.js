@@ -1,14 +1,21 @@
 const Employee = require('../models/employee')
 
-const create_emp = async (req,res) => {//incomp
-    const emp = new Employee(req.body);
-    await emp.save();
-
+const get_emp = async(req,res,next,id) => {//renders the individual employee page
     try{
-        res.redirect('/employee/:id');
+        let result = await Employee.findById(id)
+        if(!result){
+            return res.status(400).json({
+                error: "Employee does not exist"
+            })
+        }
+        // req.profile = result;
+        req.profile = 'Hi'
+        next()
     }
     catch(e){
-        console.log(e);
+        return res.status(400).json({
+            error: "Could not find Employee"
+        })
     }
 }
 
@@ -24,21 +31,15 @@ const list_emp = async (req, res) => {
     }
 }
 
-const get_emp = async(req,res,next,id) => {//renders the individual employee page
+const create_emp = async (req,res) => {//incomp
+    const emp = new Employee(req.body);
+    await emp.save();
+
     try{
-        let result = await Employee.findById(id)
-        if(!result){
-            return res.status(400).json({
-                error: "Employee does not exist"
-            })
-        }
-        req.profile = result;
-        next()
+        res.redirect('/employee/:id');
     }
     catch(e){
-        return res.status(400).json({
-            error: "Could not find Employee"
-        })
+        console.log(e);
     }
 }
 
@@ -57,7 +58,7 @@ const update_emp = async(req,res) => {
     }
 }
 
-const remove_emp = async (req,res) =>{
+const delete_emp = async (req,res) =>{
     try{
         let result = req.profile
         let deletedEmployee = await result.remove()
@@ -74,6 +75,6 @@ module.exports = {
     create_emp,
     update_emp,
     list_emp,
-    remove_emp,
+    delete_emp,
     get_emp
 }

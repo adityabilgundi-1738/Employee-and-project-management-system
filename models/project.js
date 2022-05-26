@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const project = new mongoose.Schema({
+const Schema = mongoose.Schema
+const project = new Schema({
     Title:{
         type: String,
         required: true
@@ -21,8 +22,7 @@ const project = new mongoose.Schema({
         default: 'NoStatus'
     },
     Started:{
-        type: Date,
-        required: false
+        type: Date
     },
     Deadline:{
         type: Date,

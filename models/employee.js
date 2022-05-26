@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const employee = new mongoose.Schema('employee')({
+const employee = new mongoose.Schema({
     Name:{
         type: String,
         required: true
@@ -9,7 +9,7 @@ const employee = new mongoose.Schema('employee')({
         required: true
     },
     Email:{
-        type: Email,
+        type: String,
         required: true
     },
     Cell:{
@@ -17,7 +17,7 @@ const employee = new mongoose.Schema('employee')({
         required: true
     },
     Projects:{
-        type: project,
+        type: String,
         required: true 
     },
     Level:{
