@@ -29,7 +29,8 @@ const Admin = (props) => {
             key={key}
           />
         );
-      } else {
+      }
+      else {
         return null;
       }
     });

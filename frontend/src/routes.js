@@ -1,4 +1,4 @@
-import Index from "views/Index.js";
+import Projects from "views/Index.js";
 import Profile from "views/examples/Profile.js";
 import Maps from "views/examples/Maps.js";
 import Register from "views/examples/Register.js";
@@ -8,21 +8,35 @@ import Icons from "views/examples/Icons.js";
 
 var routes = [
   {
-    path: "/index",
+    path: "/projects",
     name: "Projects",
     icon: "ni ni-tv-2 text-primary",
-    component: Index,
+    component: Projects,
     layout: "/admin",
   },
   {
-    path: "/icons",
+    path: "/projects",
+    name: "Projects",
+    icon: "ni ni-tv-2 text-primary",
+    component: Projects,
+    layout: "/user"
+  },
+  {
+    path: "/user-details",
+    name: "Profile",
+    icon: "ni ni-tv-2 text-primary",
+    component: Profile,
+    layout: "/user"
+  },
+  {
+    path: "/employee",
     name: "Employee",
     icon: "ni ni-planet text-blue",
     component: Icons,
     layout: "/admin",
   },
   {
-    path: "/maps",
+    path: "/project",
     name: "Admin Control",
     icon: "ni ni-pin-3 text-orange",
     component: Maps,
