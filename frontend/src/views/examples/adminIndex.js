@@ -1,21 +1,3 @@
-/*!
-
-=========================================================
-* Argon Dashboard React - v1.2.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-// reactstrap components
 import {
   Badge,
   Card,
@@ -34,11 +16,26 @@ import {
   Container,
   Row,
   UncontrolledTooltip,
+  Button
 } from "reactstrap";
 // core components
 import Header from "components/Headers/Header.js";
+import React, { useState, useEffect } from 'react';
+
 
 const Tables = () => {
+
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    console.log("ehere Clicked");
+    setCount(count+2);
+  }
+
+  useEffect(() => {
+    //API Comes Here
+  });
+
   return (
     <>
       <Header />
@@ -47,9 +44,11 @@ const Tables = () => {
         {/* Table */}
         <Row>
           <div className="col">
+            {/* <Button onClick={handleClick()}>Test Me {{count}}</Button> */}
+            <Button color="primary" onClick={handleClick}>primary {count}</Button>{' '}
             <Card className="shadow">
               <CardHeader className="border-0">
-                <h3 className="mb-0">Card tables</h3>
+                <h3 className="mb-0">Projects</h3>
               </CardHeader>
               <Table className="align-items-center table-flush" responsive>
                 <thead className="thead-light">
@@ -943,8 +942,8 @@ const Tables = () => {
           </div>
         </Row>
         {/* Dark table */}
-        <Row className="mt-5">
-          <div className="col">
+        {/*<Row className="mt-5">
+            <div className="col">
             <Card className="bg-default shadow">
               <CardHeader className="bg-transparent border-0">
                 <h3 className="text-white mb-0">Card tables</h3>
@@ -1788,6 +1787,7 @@ const Tables = () => {
             </Card>
           </div>
         </Row>
+        */}                    
       </Container>
     </>
   );

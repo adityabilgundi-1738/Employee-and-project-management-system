@@ -5,10 +5,9 @@ import { Container } from "reactstrap";
 // core components
 import UserNavbar from "components/Navbars/UserNavbar.js";
 import UserFooter from "components/Footers/UserFooter.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
+import Sidebar from "components/Sidebar/UserSidebar.js";
 
 import routes from "routes.js";
-import UserNavbar from "components/Navbars/UserNavbar";
 
 const User = (props) => {
     const mainContent = React.useRef(null);

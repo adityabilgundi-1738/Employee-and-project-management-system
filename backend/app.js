@@ -17,14 +17,15 @@ mongoose
     .connect('mongodb+srv://admin:PCF5a823Xk0KKrZs@cluster0.pdwd6gk.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
     
     .then(result => {
-        app.listen('3000')
+        app.listen('7000')
         console.log('Connected to DB')
     })
     .catch(err => console.log(err))
 
-app.use('', (req,res) => {
+app.use('/hello', (req,res) => {
     res.status(200).send('Hey! There Lattech Here')
 })
+
 app.use('/', routes)
 
 app.use('*',(req,res) => {//default route

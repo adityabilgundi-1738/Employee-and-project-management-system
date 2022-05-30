@@ -1,0 +1,1 @@
+An employee and project management system screated using MERN Stack.
