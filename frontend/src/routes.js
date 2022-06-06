@@ -8,14 +8,11 @@ import employeeList from "views/examples/Icons.js";
 import Profile from "views/examples/Profile.js";
 
 //user
-import userIndex from "views/userIndex.js";
+import userIndex from "views/examples/userIndex.js";
 
 //auth
 import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
-
-// import Maps from "views/examples/Maps.js";
-// import usageStats from "views/examples/usageStats";
 
 var routes = [
   {//done
@@ -52,31 +49,15 @@ var routes = [
     icon: "ni ni-satisfied text-primary",
     component: Profile,
     layout: "/admin"
-  },
-  
-  // {
-  //   path: "/project",
-  //   name: "Admin Control",
-  //   icon: "ni ni-pin-3 text-orange",
-  //   component: Maps,
-  //   layout: "/admin",
-  // },
-  // {//done
-  //   path: "/usage",
-  //   name: "Usage Stats",
-  //   icon: "ni ni-chart-bar-32 text-primary",
-  //   component: usageStats,
-  //   layout: "/admin"
-  // },
-  
-  {//done
+  },  
+  {
     path: "/index",
     name: "Index",
     icon: "ni ni-tv-2 text-primary",
     component: userIndex,
     layout: "/user"
   },
-  {//done
+  {
     path: "/details",
     name: "Profile",
     icon: "ni ni-tv-2 text-primary",

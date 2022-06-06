@@ -1,13 +1,13 @@
 import React from "react";
 import { useLocation, Route, Switch, Redirect } from "react-router-dom";
-// reactstrap components
-import { Container } from "reactstrap";
-// core components
-import UserNavbar from "components/Navbars/UserNavbar.js";
-import UserFooter from "components/Footers/UserFooter.js";
-import Sidebar from "components/Sidebar/UserSidebar.js";
 
-import routes from "routes.js";
+import { Container } from "reactstrap";
+
+import UserNavbar from "../components/Navbars/UserNavbar.js";
+import UserFooter from "../components/Footers/UserFooter.js";
+import Sidebar from "../components/Sidebar/UserSidebar";
+
+import routes from "../routes"
 
 const User = (props) => {
     const mainContent = React.useRef(null);
@@ -38,7 +38,7 @@ const User = (props) => {
 
     const getBrandText = (path) => {
         for(let i = 0 ; i < routes.length; i++){
-            if(props.location.pathname.indexOf(routes[i].layout + routes[i].path) !==-1){
+            if(props.location.pathname.indexOf(routes[i].layout + routes[i].path) !== -1){
                 return routes[i].name;
             }
         }

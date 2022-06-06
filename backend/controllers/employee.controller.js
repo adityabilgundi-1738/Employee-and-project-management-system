@@ -1,15 +1,14 @@
 const Employee = require('../models/employee')
 
-const get_emp = async(req,res,next,id) => {
+const get_emp = async(req,res) => {
     try{
-        let result = await Employee.findById(id)
+        let result = await Employee.findById(req.id)
         if(!result){
             return res.status(400).json({
                 error: "Employee does not exist"
             })
         }
-        req.profile = result;
-        next()
+        req.json(result)
     }
     catch(e){
         return res.status(400).json({
