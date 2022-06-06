@@ -36,15 +36,15 @@ export default function Tables() {
     axios.get(`${url}employee`)
     .then((res) => {
       const allEmp = res.data;
-      // console.log(allEmp); 
+      console.log(allEmp);
       getEmployee(allEmp);
     })
     .catch((e) => console.log(`error, ${e}`));
   }
 
   return(
-    <>
+    <div>
       <Header/>
-    </>
+    </div>
   )
 };

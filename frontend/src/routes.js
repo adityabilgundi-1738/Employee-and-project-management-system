@@ -1,18 +1,18 @@
 //admin
-import adminIndex from "views/examples/adminIndex.js";
-import newProject from "views/examples/createProject.js"
-import newEmployee from "views/examples/newEmployee.js"
-import employeeList from "views/examples/Icons.js";
+import adminIndex from "views/admin/adminIndex.js";
+import newProject from "views/admin/createProject.js"
+import newEmployee from "views/admin/newEmployee.js"
+import employeeList from "views/admin/EmployeeList";
 
 //common
-import Profile from "views/examples/Profile.js";
+import Profile from "views/common/Profile.js";
 
 //user
-import userIndex from "views/examples/userIndex.js";
+import userIndex from "views/user/userIndex.js";
 
 //auth
-import Register from "views/examples/Register.js";
-import Login from "views/examples/Login.js";
+import Register from "views/auth/Register.js";
+import Login from "views/auth/Login.js";
 
 var routes = [
   {//done
