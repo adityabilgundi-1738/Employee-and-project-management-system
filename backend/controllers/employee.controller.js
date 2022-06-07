@@ -1,78 +1,82 @@
 const Employee = require('../models/employee')
 
-const get_emp = async(req,res) => {
-    try{
-        let result = await Employee.findById(req.id)
-        if(!result){
-            return res.status(400).json({
-                error: "Employee does not exist"
+const allEmployee = async (req, res) => {
+    Employee.find({}, function(err,employee){
+        if(err){
+            res.json({success: false})
+        }
+        employee = employee.map(function(item){
+            const it = item;
+            return it;
+        })
+        res.json({success: true, employee:employee})
+    })
+}
+
+const oneEmployee = async(req,res) => {//done
+    const {id} = req.body;
+    Employee.findOne({_id: id}, function(err,employee){
+        if(err){
+            res.json({success:false})
+        }
+        employee = employee;
+        res.json({success: true, employee: employee})
+    })
+}
+
+const newEmployee = async (req,res) => {//done
+    const {name,password,email,level} = req.body
+
+    const emp = new Employee({name: name, email: email, password: password, level: level}, function(err,emp){
+        if(err){
+            res.json({success: false})
+        }
+    })
+    emp.save();
+    res.json({success: true, emp: emp})
+}
+
+const updateEmployee = async(req,res) => {//done
+    const {id,name,email,password,level} = req.body;
+    Employee.find({_id: id}).then((emp) => {
+        if(emp.length == 1){
+            const query = {_id: emp[0]._id};
+            const newvalues = {$set: {name: name, email: email, password: password, level: level}};
+            Employee.updateOne(query,newvalues, function(err){
+                if(err){
+                    res.json({success:false})
+                }
+                res.json({success:true, employee: emp})
             })
         }
-        req.json(result)
-    }
-    catch(e){
-        return res.status(400).json({
-            error: "Could not find Employee"
-        })
-    }
+        else{
+            res.json({success: false})
+        }
+    })
 }
 
-const list_emp = async (req, res) => {
-    try {
-        let users = await Employee.find().select('Name Email Projects Level')
-        res.json(users)
-    } 
-    catch(err){
-        return res.status(400).json({
-            error: "Could not list Employee"
-        })
-    }
-}
-
-const create_emp = async (req,res) => {//incomp
-    const emp = new Employee(req.body);
-    await emp.save();
-
-    try{
-        res.redirect('/employee/:id');
-    }
-    catch(e){
-        console.log(e);
-    }
-}
-
-const update_emp = async(req,res) => {
-    try{
-        let result = req.profile
-        result = extend(result,res.body)
-        result.updated = Date.now()
-        await result.save()
-        res.json(result)
-    }
-    catch(err){
-        return res.status(400).json({
-            error: "Could not update Employee details"
-        })
-    }
-}
-
-const delete_emp = async (req,res) =>{
-    try{
-        let result = req.profile
-        let deletedEmployee = await result.remove()
-        res.json(deletedEmployee)
-    }
-    catch(err){
-        return res.status(400).json({
-            error: "Employee not deleted"
-        })
-    }
+const deleteEmployee = async (req,res) =>{//done
+    const {id} = req.body
+    Employee.find({_id: id}).then((emp) => {
+        if(emp.length == 1){
+            const query = {_id: emp[0]._id}
+            Employee.deleteOne(query, function(err){
+                if(err){
+                    res.json({success:false})
+                }
+                res.json({success:true, project: emp})
+            })
+        }
+        else{
+            res.json({success:false})
+        }
+    })
 }
 
 module.exports = {
-    create_emp,
-    update_emp,
-    list_emp,
-    delete_emp,
-    get_emp
+    newEmployee,
+    updateEmployee,
+    allEmployee,
+    deleteEmployee,
+    oneEmployee
 }

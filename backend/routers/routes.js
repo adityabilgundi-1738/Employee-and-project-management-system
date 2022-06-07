@@ -1,27 +1,31 @@
 const express = require('express')
 const router = express.Router()
+const Employee = require('../models/employee')
+const Project = require('../models/project')
 
 const employeeCtrl = require('../controllers/employee.controller')
 const projCtrl =require('../controllers/project.controller')
 
-router.get('/employee/:id',employeeCtrl.get_emp)
+//Employee routes... here all routes are working and verified
+router.post('/allEmployee',employeeCtrl.allEmployee)
 
-router.get('/employee',employeeCtrl.list_emp)
+router.post('/oneEmployee',employeeCtrl.oneEmployee)
 
-router.put('/newEmployee',employeeCtrl.create_emp)
+router.post('/updateEmployee',employeeCtrl.updateEmployee)
 
-router.delete('/employee/:id',employeeCtrl.delete_emp)
+router.post('/newEmployee',employeeCtrl.newEmployee)
 
-router.put('/employee/:id',employeeCtrl.update_emp)
+router.post('/deleteEmployee',employeeCtrl.deleteEmployee)
 
-router.get('/project/:id',projCtrl.get_proj)
+//project routes... here all routes are working and verified
+router.post('/allProjects',projCtrl.allProjects)
 
-router.get('/project',projCtrl.list_proj)
+router.post('/oneProject',projCtrl.oneProject)
 
-router.post('/newProject',projCtrl.create_proj)
+router.post('/newProject',projCtrl.newProject)
 
-router.put('/project/:id',projCtrl.update_proj)
+router.post('/updateProject',projCtrl.updateProject)
 
-router.delete('/project/:id',projCtrl.delete_proj)
+router.post('/deleteProject',projCtrl.deleteProject)
 
 module.exports = router;

@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { NavLink as NavLinkRRD, Link } from "react-router-dom";
+// nodejs library to set properties for components
 import { PropTypes } from "prop-types";
 
+// reactstrap components
 import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
   Collapse,
   DropdownMenu,
   DropdownItem,
@@ -32,9 +29,7 @@ import {
   Col,
 } from "reactstrap";
 
-var ps;
-
-const Sidebar = (props) => {
+const UserSidebar = (props) => {
   const [collapseOpen, setCollapseOpen] = useState();
   // verifies if routeName is the one active (in browser input)
   const activeRoute = (routeName) => {
@@ -51,21 +46,21 @@ const Sidebar = (props) => {
   // creates the links that appear in the left menu / Sidebar
   const createLinks = (routes) => {
     return routes.map((prop, key) => {
-      if(prop.layout === "/user"){
-        return (
-          <NavItem key={key}>
-            <NavLink
-              to={prop.layout + prop.path}
-              tag={NavLinkRRD}
-              onClick={closeCollapse}
-              activeClassName="active"
-            >
-              <i className={prop.icon} />
-              {prop.name}
-            </NavLink>
-          </NavItem>
-        );
-      }
+        if(prop.layout === "/user"){
+          return (
+            <NavItem key={key}>
+              <NavLink
+                to={prop.layout + prop.path}
+                tag={NavLinkRRD}
+                onClick={closeCollapse}
+                activeClassName="active"
+              >
+                <i className={prop.icon} />
+                {prop.name}
+              </NavLink>
+            </NavItem>
+          );
+        }
     });
   };
 
@@ -143,19 +138,19 @@ const Sidebar = (props) => {
               <DropdownItem className="noti-title" header tag="div">
                 <h6 className="text-overflow m-0">Welcome!</h6>
               </DropdownItem>
-              <DropdownItem to="/admin/user-profile" tag={Link}>
+              <DropdownItem to="/user/user-profile" tag={Link}>
                 <i className="ni ni-single-02" />
                 <span>My profile</span>
               </DropdownItem>
-              <DropdownItem to="/admin/user-profile" tag={Link}>
+              <DropdownItem to="/user/user-profile" tag={Link}>
                 <i className="ni ni-settings-gear-65" />
                 <span>Settings</span>
               </DropdownItem>
-              <DropdownItem to="/admin/user-profile" tag={Link}>
+              <DropdownItem to="/user/user-profile" tag={Link}>
                 <i className="ni ni-calendar-grid-58" />
                 <span>Activity</span>
               </DropdownItem>
-              <DropdownItem to="/admin/user-profile" tag={Link}>
+              <DropdownItem to="/user/user-profile" tag={Link}>
                 <i className="ni ni-support-16" />
                 <span>Support</span>
               </DropdownItem>
@@ -254,18 +249,25 @@ const Sidebar = (props) => {
   );
 };
 
-Sidebar.defaultProps = {
+UserSidebar.defaultProps = {
   routes: [{}],
 };
 
-Sidebar.propTypes = {
+UserSidebar.propTypes = {
+  // links that will be displayed inside the component
   routes: PropTypes.arrayOf(PropTypes.object),
   logo: PropTypes.shape({
+    // innerLink is for links that will direct the user within the app
+    // it will be rendered as <Link to="...">...</Link> tag
     innerLink: PropTypes.string,
+    // outterLink is for links that will direct the user outside the app
+    // it will be rendered as simple <a href="...">...</a> tag
     outterLink: PropTypes.string,
+    // the image src of the logo
     imgSrc: PropTypes.string.isRequired,
+    // the alt for the img
     imgAlt: PropTypes.string.isRequired,
   }),
 };
 
-export default Sidebar;
+export default UserSidebar;

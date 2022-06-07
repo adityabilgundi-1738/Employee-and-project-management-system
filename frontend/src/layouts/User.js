@@ -56,14 +56,14 @@ const User = (props) => {
                     imgAlt: "..."
                 }}
             />
-            <div classname="mainContent" ref={mainContent}>
+            <div className="mainContent" ref={mainContent}>
                 <UserNavbar
                     {...props}
                     brandText={getBrandText(props.location.pathname)}
                 />
                 <Switch>
                     {getRoutes(routes)}
-                    <Redirect from="*" to="/user/index"/>
+                    <Redirect from="*" to="/admin/index"/>
                 </Switch>
                 <Container>
                     <UserFooter/>

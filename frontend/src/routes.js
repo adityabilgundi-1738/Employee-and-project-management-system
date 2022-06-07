@@ -8,14 +8,14 @@ import employeeList from "views/admin/EmployeeList";
 import Profile from "views/common/Profile.js";
 
 //user
-import userIndex from "views/user/userIndex.js";
+// import userIndex from "views/user/userIndex.js";
 
 //auth
 import Register from "views/auth/Register.js";
 import Login from "views/auth/Login.js";
 
 var routes = [
-  {//done
+  {//don
     path: "/index",
     name: "All Projects",
     icon: "ni ni-bullet-list-67 text-red",
@@ -23,17 +23,17 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/newProject",
-    name: "Create a new Project",
-    icon: "ni ni-laptop text-red",
-    component: newProject,
-    layout: "/admin"
-  },
-  {
     path:"/addEmployee",
     name: "Add a New Employee",
     icon: "ni ni-briefcase-24 text-primary",
     component: newEmployee,
+    layout: "/admin"
+  },
+  {
+    path: "/newProject",
+    name: "Create a new Project",
+    icon: "ni ni-laptop text-red",
+    component: newProject,
     layout: "/admin"
   },
   {
@@ -45,25 +45,25 @@ var routes = [
   },
   {//done
     path: "/details",
-    name: "Profile",
+    name: "Your Profile",
     icon: "ni ni-satisfied text-primary",
     component: Profile,
     layout: "/admin"
   },  
-  {
-    path: "/index",
-    name: "Index",
-    icon: "ni ni-tv-2 text-primary",
-    component: userIndex,
-    layout: "/user"
-  },
-  {
-    path: "/details",
-    name: "Profile",
-    icon: "ni ni-tv-2 text-primary",
-    component: Profile,
-    layout: "/user"
-  },
+  // {
+  //   path: "/index",
+  //   name: "Index",
+  //   icon: "ni ni-tv-2 text-primary",
+  //   component: userIndex,
+  //   layout: "/user"
+  // },
+  // {
+  //   path: "/details",
+  //   name: "Profile",
+  //   icon: "ni ni-tv-2 text-primary",
+  //   component: Profile,
+  //   layout: "/user"
+  // },
   {
     path: "/login",
     name: "Login",

@@ -1,30 +1,28 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 const project = new Schema({
-    Title:{
+    title:{
         type: String,
         required: true
     },
-    Description:{
+    description:{
         type: String
     },
-    Employee:[
+    employee:[
         {
-            emp:{
-                type: Schema.Types.ObjectId,
-                enum: 'Employee'
-            }
+            type: String
         }
     ],
-    Status:{
+    status:{
         type: String,
         enum: ['In-progess','Completed','NoStatus'],
         default: 'NoStatus'
     },
-    Started:{
-        type: Date
+    started:{
+        type: Date,
+        default: Date.now
     },
-    Deadline:{
+    deadline:{
         type: Date,
         default: Date.now
     }

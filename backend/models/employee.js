@@ -1,28 +1,28 @@
 const mongoose = require('mongoose')
 const employee = new mongoose.Schema({
-    Name:{
+    name:{
         type: String,
         required: true
     },
-    Employeeid:{
-        type: Number,
-        required: true
-    },
-    Email:{
+    password:{
         type: String,
         required: true
     },
-    Cell:{
-        type: Number,
+    email:{
+        type: String,
         required: true
     },
-    Projects:{
+    level:{
         type: String,
-        required: true 
+        enum: ['Beginner', 'Intermediate', 'Advanced']
     },
-    Level:{
-        type: String,
-        enum: ['Beginner', 'Intermideate', 'Advanced']
+    date:{
+        type: Date,
+        default: Date.now
+    },
+    admin:{
+        type: Bool,
+        default: false
     }
 })
 
