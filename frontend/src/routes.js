@@ -23,7 +23,7 @@ var routes = [
     layout: "/admin",
   },
   {
-    path:"/addEmployee",
+    path:"/newEmployee",
     name: "Add a New Employee",
     icon: "ni ni-briefcase-24 text-primary",
     component: newEmployee,
@@ -37,7 +37,7 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/employee",
+    path: "/allEmployee",
     name: "All Employee",
     icon: "ni ni-settings text-blue",
     component: employeeList,

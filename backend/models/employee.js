@@ -21,7 +21,7 @@ const employee = new mongoose.Schema({
         default: Date.now
     },
     admin:{
-        type: Bool,
+        type: Boolean,
         default: false
     }
 })

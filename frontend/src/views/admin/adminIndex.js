@@ -33,7 +33,7 @@ export default function Tables() {
   },[]);
 
   const getAllEmployee = () => {
-    axios.get(`${url}employee`)
+    axios.get(`${url}allEmployee`)
     .then((res) => {
       const allEmp = res.data;
       console.log(allEmp);
