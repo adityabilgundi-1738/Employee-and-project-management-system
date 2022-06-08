@@ -24,10 +24,6 @@ mongoose
     })
     .catch(err => console.log(err))
 
-app.use('/hello', (req,res) => {
-    res.status(200).send('Hey! There Lattech Here')
-})
-
 app.use('/', routes)
 
 app.use('*',(req,res) => {//default route
