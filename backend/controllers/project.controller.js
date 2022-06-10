@@ -2,7 +2,7 @@ const Project = require('../models/project')
 
 const allProjects = async(req,res) => {//done
     try{
-        let project = Project.find({});
+        let project = await Project.find({});
         project = project.map(function(item){
             const it = item
             return it;

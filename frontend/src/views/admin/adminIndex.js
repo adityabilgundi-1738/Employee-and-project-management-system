@@ -1,50 +1,30 @@
-import {
-  Badge,
-  Card,
-  CardHeader,
-  CardFooter,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  Media,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  Progress,
-  Table,
-  Container,
-  Row,
-  UncontrolledTooltip,
-  Button
-} from "reactstrap";
-
 import Header from "../../components/Headers/Header";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Tables from "../../tables/projectTables"
 
-export default function Tables() {
-  const [emp, getEmployee] = useState('');
+const url = 'http://localhost:7000/';
 
-  const url = 'http://localhost:7000/';
+function Projects() {
+  let [proj, setState] = useState([]);
 
   useEffect(() => {
-    getAllEmployee();
-  },[]);
+    getAllProjects();
+  }, []);
 
-  const getAllEmployee = async () => {
-    await axios.get(`${url}allEmployee`)
-    .then((res) => {
-      const allEmp = res.data;
-      console.log(allEmp);
-      getEmployee(allEmp);
+  async function getAllProjects() {
+    await axios.post(`${url}allProjects`)
+    .then(res => {
+      setState(res)
     })
-    .catch((e) => console.log(`error, ${e}`));
+      .catch((e) => console.log(`error, ${e}`));
   }
 
-  return(
+  return (
     <div>
-      <Header/>
+      <Header />
+      <Tables data={proj.data} />
     </div>
   )
 };
+export default Projects;
