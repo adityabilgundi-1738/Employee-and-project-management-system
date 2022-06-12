@@ -20,6 +20,7 @@ import {
 } from "reactstrap";
 
 import Header from "../../components/Headers/Header";
+import ProjectForm from "../../forms/newProjectfrom"
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -44,6 +45,7 @@ export default function Tables() {
     return (
         <div>
             <Header />
+            <ProjectForm />
         </div>
     )
 };

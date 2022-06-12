@@ -21,7 +21,7 @@ function Index(props) {
     const [activeNav, setActiveNav] = useState(1);
 
     const help = (props) => {
-        if(props.proj.success){
+        if (props.proj.success) {
             setProps(props);
         }
     }
@@ -88,7 +88,8 @@ function Index(props) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {/* {props.data.proj.map(proj => {
+                                            {/* {
+                                                props.data.proj.map(proj => {
                                                     <tr>
                                                         <th scope="row">{proj.title}</th>
                                                         <td>{proj.description}</td>
@@ -96,6 +97,13 @@ function Index(props) {
                                                     </tr>
                                                 })
                                             } */}
+                                            {/* 
+                                                function(item) {
+                                                    var cell = document.createElement("td");
+                                                    cell.textContent = item;
+                                                    row.appendChild(cell);
+                                                }
+                                            */}
                                             <tr>
                                                 <th scope="row">title</th>
                                                 <td>4,569</td>
