@@ -16,9 +16,10 @@ import {
 } from "reactstrap";
 
 function Index(props) {
-    console.log(props.data);
     const [pr, setProps] = useState([]);
     const [activeNav, setActiveNav] = useState(1);
+    
+    console.log(props.emp);
 
     const help = (props) => {
         setProps(props);

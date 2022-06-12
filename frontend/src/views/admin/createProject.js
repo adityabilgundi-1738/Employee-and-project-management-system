@@ -33,7 +33,7 @@ export default function Tables() {
     }, []);
 
     const getAllEmployee = async () => {
-        await axios.get(`${url}allEmployee`).then((res) => {
+        await axios.get(`${url}newProject`).then((res) => {
             const allEmp = res.data;
             console.log(allEmp);
             getEmployee(allEmp);

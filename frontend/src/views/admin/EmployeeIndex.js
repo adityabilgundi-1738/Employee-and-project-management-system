@@ -23,7 +23,7 @@ function Employee() {
   return (
     <div>
       <Header />
-      <Tables data={emp.data} />
+      <Tables emp={emp.data} />
     </div>
   )
 };

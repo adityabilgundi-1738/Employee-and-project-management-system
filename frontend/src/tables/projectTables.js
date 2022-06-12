@@ -16,21 +16,20 @@ import {
 } from "reactstrap";
 
 function Index(props) {
-    console.log(props.data);
+    console.log(props.proj);
     const [pr, setProps] = useState([]);
     const [activeNav, setActiveNav] = useState(1);
 
     const help = (props) => {
-        setProps();
+        if(props.proj.success){
+            setProps(props);
+        }
     }
-
-    useEffect(() => {
-        help(props);
-    }, []);
 
     const toggleNavs = (e, index) => {
         e.preventDefault();
         setActiveNav(index);
+        help(props);
     };
 
     return (
@@ -89,18 +88,14 @@ function Index(props) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {/* {
-                                                props.data.project.map(proj => {
-                                                    return (
-                                                        <tr>
-                                                            <th scope="row">{proj.title}</th>
-                                                            <td>{proj.description}</td>
-                                                            <td>{proj.password}</td>
-                                                        </tr>
-                                                    )
+                                            {/* {props.data.proj.map(proj => {
+                                                    <tr>
+                                                        <th scope="row">{proj.title}</th>
+                                                        <td>{proj.description}</td>
+                                                        <td>{proj.status}</td>
+                                                    </tr>
                                                 })
                                             } */}
-                                            {/* dummy */}
                                             <tr>
                                                 <th scope="row">title</th>
                                                 <td>4,569</td>

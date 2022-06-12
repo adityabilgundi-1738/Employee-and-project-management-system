@@ -17,13 +17,14 @@ function Projects() {
     .then(res => {
       setState(res)
     })
-      .catch((e) => console.log(`error, ${e}`));
+    .catch((e) => console.log(`error, ${e}`));
   }
 
   return (
     <div>
       <Header />
-      <Tables data={proj.data} />
+    
+      <Tables proj={proj.data} />
     </div>
   )
 };

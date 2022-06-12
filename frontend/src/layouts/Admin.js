@@ -13,11 +13,11 @@ const Admin = (props) => {
   const mainContent = React.useRef(null);
   const location = useLocation();
 
-  // useEffect(() => {
-  //   document.documentElement.scrollTop = 0;
-  //   document.scrollingElement.scrollTop = 0;
-  //   mainContent.current.scrollTop = 0;
-  // }, [location]);
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.scrollingElement.scrollTop = 0;
+    mainContent.current.scrollTop = 0;
+  }, [location]);
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {

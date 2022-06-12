@@ -2,20 +2,17 @@
 import adminIndex from "views/admin/adminIndex.js";
 import newProject from "views/admin/createProject.js"
 import newEmployee from "views/admin/newEmployee.js"
-import employeeList from "views/admin/EmployeeList";
+import employeeIndex from "views/admin/EmployeeIndex"
 
 //common
 import Profile from "views/common/Profile.js";
-
-//user
-// import userIndex from "views/user/userIndex.js";
 
 //auth
 import Register from "views/auth/Register.js";
 import Login from "views/auth/Login.js";
 
 var routes = [
-  {//don
+  {
     path: "/index",
     name: "All Projects",
     icon: "ni ni-bullet-list-67 text-red",
@@ -37,13 +34,13 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/allEmployee",
+    path: "/employeeIndex",
     name: "All Employee",
     icon: "ni ni-settings text-blue",
-    component: employeeList,
+    component: employeeIndex,
     layout: "/admin",
   },
-  {//done
+  {
     path: "/details",
     name: "Your Profile",
     icon: "ni ni-satisfied text-primary",
