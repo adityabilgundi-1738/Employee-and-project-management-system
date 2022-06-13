@@ -12,7 +12,7 @@ function Projects() {
     getAllProjects();
   }, []);
 
-  async function getAllProjects() {
+  const getAllProjects = async () => {
     await axios.post(`${url}allProjects`)
     .then(res => {
       setState(res)

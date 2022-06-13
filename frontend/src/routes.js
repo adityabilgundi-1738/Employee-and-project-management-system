@@ -20,17 +20,17 @@ var routes = [
     layout: "/admin",
   },
   {
-    path:"/newEmployee",
-    name: "Add a New Employee",
-    icon: "ni ni-briefcase-24 text-primary",
-    component: newEmployee,
-    layout: "/admin"
-  },
-  {
     path: "/newProject",
     name: "Create a new Project",
     icon: "ni ni-laptop text-red",
     component: newProject,
+    layout: "/admin"
+  },
+  {
+    path:"/newEmployee",
+    name: "Add a New Employee",
+    icon: "ni ni-briefcase-24 text-primary",
+    component: newEmployee,
     layout: "/admin"
   },
   {
