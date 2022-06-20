@@ -1,36 +1,66 @@
 import { useState, useEffect } from "react";
 import classnames from "classnames";
+import axios from 'axios';
+
 import {
-    Button,
     Card,
     CardHeader,
     CardBody,
     NavItem,
     NavLink,
     Nav,
-    Progress,
     Table,
     Container,
     Row,
     Col
 } from "reactstrap";
 
-function Index(props) {
-    console.log(props.proj);
-    const [pr, setProps] = useState([]);
-    const [activeNav, setActiveNav] = useState(1);
+const url = 'http://localhost:7000/'
 
-    const help = (props) => {
-        if (props.proj.success) {
-            setProps(props);
-        }
+function Index() {
+    const [proj, setProjects] = useState([]);
+
+    const getAllProjects = async () => {
+        await axios.post(`${url}allProjects`)
+            .then(res => {
+                setProjects(res.data);
+            })
+            .catch((e) => {
+                console.log(`error, ${e}`);
+            })
     }
+
+    useEffect(() => {
+        getAllProjects();
+    }, []);
+
+    const [activeNav, setActiveNav] = useState(1);
 
     const toggleNavs = (e, index) => {
         e.preventDefault();
         setActiveNav(index);
-        help(props);
     };
+
+    const getRows = () => {
+        if (proj.success) {
+            var projectArray = proj['project'];
+            return (
+                <>
+                    {
+                        projectArray.map(item => (
+                            <tr data-testid='projects'>
+                                <th scope="row">{item.title}</th>
+                                <td>{item.description}</td>
+                                <td>{item.status}</td>
+                                <td>{item.deadline}</td>
+                                <td>{item.started}</td>
+                            </tr>
+                        ))
+                    }
+                </>
+            )
+        }
+    }
 
     return (
         <>
@@ -88,30 +118,7 @@ function Index(props) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {/* {
-                                                props.data.proj.map(proj => {
-                                                    <tr>
-                                                        <th scope="row">{proj.title}</th>
-                                                        <td>{proj.description}</td>
-                                                        <td>{proj.status}</td>
-                                                    </tr>
-                                                })
-                                            } */}
-                                            {/* 
-                                                function(item) {
-                                                    var cell = document.createElement("td");
-                                                    cell.textContent = item;
-                                                    row.appendChild(cell);
-                                                }
-                                            */}
-                                            <tr>
-                                                <th scope="row">title</th>
-                                                <td>4,569</td>
-                                                <td>340</td>
-                                                <td>
-                                                    <i className="fas fa-arrow-up text-success mr-3" /> 46,53%
-                                                </td>
-                                            </tr>
+                                            {getRows()}
                                         </tbody>
                                     </Table>
                                 </Card>

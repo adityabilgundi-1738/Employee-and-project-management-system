@@ -1,35 +1,68 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classnames from "classnames";
+import axios from 'axios';
+
 import {
-    Button,
     Card,
     CardHeader,
     CardBody,
     NavItem,
     NavLink,
     Nav,
-    Progress,
     Table,
     Container,
     Row,
     Col
 } from "reactstrap";
 
-function Index(props) {
-    const [pr, setProps] = useState([]);
-    const [activeNav, setActiveNav] = useState(1);
-    
-    console.log(props.emp);
+const url = 'http://localhost:7000/'
 
-    const help = (props) => {
-        setProps(props);
+function Index() {
+    const [employee, setEmployee] = useState([]);
+
+    const getAllEmployee = async () => {
+        await axios.post(`${url}allEmployee`)
+            .then(res => {
+                setEmployee(res.data);
+            })
+            .catch((e) => {
+                console.log(`error, ${e}`);
+            })
     }
+
+    useEffect(() => {
+        getAllEmployee();
+    }, []);
+
+    const [activeNav, setActiveNav] = useState(1);
 
     const toggleNavs = (e, index) => {
         e.preventDefault();
         setActiveNav(index);
-        help(props);
     };
+
+    const getRows = () => {
+        if (employee.success) {
+            var employeeArray = employee['employee'];
+            return (
+                <>
+                    {
+                        employeeArray.map(item => (
+                            <tr data-testid='employee'>
+                                <th scope="row">{item.name}</th>
+                                <td>{item.password}</td>
+                                <td>{item.level}</td>
+                                <td>{item.email}</td>
+                                <td>{item.admin}</td>
+                                <td>{item.date}</td>
+                            </tr>
+                        ))
+                    }
+
+                </>
+            )
+        }
+    }
 
     return (
         <>
@@ -78,32 +111,16 @@ function Index(props) {
                                     <Table className="align-items-center table-flush" responsive>
                                         <thead className="thead-light">
                                             <tr>
-                                                <th scope="col">Employee name</th>
-                                                <th scope="col">Employee email</th>
-                                                <th scope="col">Employee level</th>
+                                                <th scope="col">Project title</th>
+                                                <th scope="col">Project description</th>
+                                                <th scope="col">Project status</th>
+                                                <th scope="col">Deadline</th>
                                                 <th scope="col">Started</th>
+                                                <th scope="col" />
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {/* {
-                                                props.data.project.map(proj => {
-                                                    return (
-                                                        <tr>
-                                                            <th scope="row">{proj.title}</th>
-                                                            <td>{proj.description}</td>
-                                                            <td>{proj.password}</td>
-                                                        </tr>
-                                                    )
-                                                })
-                                            } */}
-
-                                            {/* dummy */}
-                                            <tr>
-                                                <th scope="row">Adam</th>
-                                                <td>adam@yahoo.com</td>
-                                                <td>Beginner</td>
-                                                <td>12/07/2022</td>
-                                            </tr>
+                                            {getRows()}
                                         </tbody>
                                     </Table>
                                 </Card>

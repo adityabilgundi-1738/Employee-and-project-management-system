@@ -3,10 +3,10 @@ const Project = require('../models/project')
 const allProjects = async(req,res) => {//done
     try{
         let project = await Project.find({});
-        project = project.map(function(item){
-            const it = item
-            return it;
-        });
+        // project = project.map(function(item){
+        //     const it = item
+        //     return it;
+        // });
         res.json({success: true, project: project})
     }
     catch(e){

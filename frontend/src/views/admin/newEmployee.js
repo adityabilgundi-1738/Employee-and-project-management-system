@@ -1,24 +1,3 @@
-import {
-    Badge,
-    Card,
-    CardHeader,
-    CardFooter,
-    DropdownMenu,
-    DropdownItem,
-    UncontrolledDropdown,
-    DropdownToggle,
-    Media,
-    Pagination,
-    PaginationItem,
-    PaginationLink,
-    Progress,
-    Table,
-    Container,
-    Row,
-    UncontrolledTooltip,
-    Button
-} from "reactstrap";
-
 import Header from "../../components/Headers/Header";
 import Form from "../../forms/newEmployeeForm"
 import React, { useState, useEffect } from 'react';
