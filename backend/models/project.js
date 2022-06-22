@@ -2,17 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 const project = new Schema({
     title:{
-        type: String,
-        required: true
+        type: String
     },
     description:{
         type: String
     },
-    employee:[
-        {
-            type: String
-        }
-    ],
     status:{
         type: String,
         enum: ['In-progess','Completed','NoStatus'],
