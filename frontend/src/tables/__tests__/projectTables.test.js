@@ -22,6 +22,10 @@ const dummyProjects = [
 ]
 
 import axios from 'axios';
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 jest.mock('axios');
 
 const data = {
