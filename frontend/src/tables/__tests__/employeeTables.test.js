@@ -23,6 +23,8 @@ const dummyProjects = [
 
 import axios from 'axios';
 
+// Hello Testing
+
 jest.mock('axios');
 
 const data = {
