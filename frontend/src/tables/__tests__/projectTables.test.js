@@ -1,8 +1,8 @@
-import axios from 'axios';
-import {render, screen, waitFor} from '@testing-library/react'
-import AdminIndex from '../../views/admin/adminIndex'
+// import axios from 'axios';
+// import { render, screen, waitFor } from '@testing-library/react'
+// import AdminIndex from '../../views/admin/adminIndex'
 
-jest.mock(axios);
+// jest.mock(axios);
 
 const dummyProjects = [
     {
@@ -21,9 +21,34 @@ const dummyProjects = [
     }
 ]
 
-test('Get Mocked Resolved Value', async () => {
-    axios.get.mockResolvedValue({data:dummyProjects})
-    render(<AdminIndex/>);
+import axios from 'axios';
+jest.mock('axios');
 
-    const dummyProjectList = await waitFor(() => screen.findAllByTestId("projectid"))
-})
+const data = {
+    data: {
+        hits: [
+            {
+                objectID: '1',
+                title: 'a',
+            },
+            {
+                objectID: '2',
+                title: 'b',
+            },
+        ],
+    },
+};
+
+describe('fetchData', () => {
+    it('fetches successfully data from an API', async () => {
+        axios.get.mockImplementationOnce(() => Promise.resolve(data));
+    });
+
+    it('fetches erroneously data from an API', async () => {
+        const errorMessage = 'Network Error';
+
+        axios.get.mockImplementationOnce(() =>
+            Promise.reject(new Error(errorMessage)),
+        );
+    });
+});
