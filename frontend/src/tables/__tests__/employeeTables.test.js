@@ -1,8 +1,5 @@
-// import axios from 'axios';
-// import { render, screen, waitFor } from '@testing-library/react'
-// import AdminIndex from '../../views/admin/adminIndex'
-
-// jest.mock(axios);
+import axios from 'axios';
+jest.mock('axios');
 
 const dummyProjects = [
     {
@@ -21,12 +18,6 @@ const dummyProjects = [
     }
 ]
 
-import axios from 'axios';
-
-// Hello Testing
-
-jest.mock('axios');
-
 const data = {
     data: {
         hits: [
@@ -43,11 +34,11 @@ const data = {
 };
 
 describe('fetchData', () => {
-    it('fetches successfully data from an API', async () => {
+    test('fetches successfully data from an API', async () => {
         axios.get.mockImplementationOnce(() => Promise.resolve(data));
     });
 
-    it('fetches erroneously data from an API', async () => {
+    test('fetches erroneously data from an API', async () => {
         const errorMessage = 'Network Error';
 
         axios.get.mockImplementationOnce(() =>

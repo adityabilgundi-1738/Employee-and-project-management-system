@@ -99,18 +99,6 @@ function Forms() {
                 </FormGroup>
               </Col>
 
-              {/* <Col md="9">
-                <FormGroup>
-                  <label for="Password">Status</label>
-                  <Input
-                    className="form-control-alternative"
-                    placeholder="On-going"
-                    type="String"
-                    onChange={e => setStatus(e.target.value)}
-                  />
-                </FormGroup>
-              </Col> */}
-
               <Col md="9">
                 <FormGroup>
                   <label htmlFor="">Project Status</label>

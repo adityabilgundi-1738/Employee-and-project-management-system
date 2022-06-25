@@ -11,7 +11,7 @@ const fakeEmployeeData = {
 
 const fakeData2 = {
     name: 'Dummy',
-    password: 'lmao new passowrd',
+    password: 'new passowrd',
     email: 'hellooo@reddif.com',
     level: 'Beginner'
 }
@@ -66,7 +66,7 @@ describe('Create Employee', () => {
     });
 })
 
-//Read
+// Read
 // describe('Get an Employee', () => {
 //     test('Read an Employee profile', async () => {
 //         const readEmployeeData = Employee.findOne({email: 'fakeemail@gmail.com'})
@@ -90,7 +90,7 @@ describe('Create Employee', () => {
 //     })
 // })
 
-//update
+// update
 // describe('Update Employee', () => {
 //     test('Update an Employee Profile', async() => {
 //         const profiles = await Employee.find({email: 'fakemail@gmail.com'})
@@ -111,7 +111,7 @@ describe('Create Employee', () => {
 //     })
 // })
 
-//delete
+// delete
 // describe('Delete Employee', () => {
 //     test('Delete an Employee Profile', async() => {
 //         const deletedData = await Employee.find({email: 'hellooo@reddif.com'})
