@@ -6,7 +6,8 @@ const cors = require('cors');
 
 const routes = require('./routers/routes')
 
-const app = express()
+const dburl = 'mongodb+srv://admin:PCF5a823Xk0KKrZs@cluster0.pdwd6gk.mongodb.net/?retryWrites=true&w=majority';
+const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -16,7 +17,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(cors());
 
 mongoose
-    .connect('mongodb+srv://admin:PCF5a823Xk0KKrZs@cluster0.pdwd6gk.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+    .connect(dburl, {useNewUrlParser: true, useUnifiedTopology: true})
     
     .then(result => {
         app.listen('7000')
@@ -26,7 +27,7 @@ mongoose
 
 app.use('/', routes)
 
-app.use('*',(req,res) => {//default route
+app.use('*',(req,res) => {//default route   
     res.status(400).send('Page Not found!')
 })
 

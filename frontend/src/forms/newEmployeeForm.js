@@ -5,9 +5,6 @@ import {
   FormGroup,
   Form,
   Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Row,
   Col,
   Button,
@@ -21,8 +18,6 @@ import {
 } from "reactstrap";
 
 const url = 'http://localhost:7000/';
-
-
 
 function Forms() {
   const [name, setName] = useState("");
